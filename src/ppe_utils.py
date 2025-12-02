@@ -55,9 +55,9 @@ async def charge_for_model_tokens(model_name: str, tokens: int) -> None:
     tokens_hundreds = int(
         (Decimal(tokens) / Decimal('1e2')).to_integral_value(rounding=ROUND_CEILING)
     )
-    Actor.log.debug(
-        f'Charging for {tokens} tokens ({tokens_hundreds} hundreds) for model {model_name}'
-    )
+    # Actor.log.debug(
+    #     f'Charging for {tokens} tokens ({tokens_hundreds} hundreds) for model {model_name}'
+    # )
 
     if not (event_name := MODEL_PPE_EVENT.get(model_name)):
         raise ValueError(f'Unknown model name: {model_name}')
